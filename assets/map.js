@@ -26,15 +26,15 @@
   h+='<g class="sweep"><path d="M300 300 L300 40 A260 260 0 0 1 430 75 Z" fill="url(#sg)"/></g>';
   h+='<circle class="ripple" cx="300" cy="300" r="22"/><circle class="ripple" cx="300" cy="300" r="22"/></g>';
   h+='<g id="routeG"></g><g id="nodes"></g>';
-  h+='<g><circle cx="300" cy="300" r="15" fill="#3dffa0"/><circle cx="300" cy="300" r="6" fill="#032014"/><text x="300" y="338" text-anchor="middle" style="font-size:17px;font-weight:700;fill:#fff">River Hill</text></g>';
+  h+='<g><circle cx="300" cy="300" r="15" fill="#3dffa0"/><circle cx="300" cy="300" r="6" fill="#032014"/><text x="300" y="338" text-anchor="middle" class="cl">River Hill</text></g>';
   svg.innerHTML=h;
   const nodes=document.getElementById('nodes'),routeG=document.getElementById('routeG');
-  P.forEach(p=>{const[x,y]=pos(p);const left=x<300;
+  P.forEach((p,i)=>{const[x,y]=pos(p);const left=x<300;
     const g=document.createElementNS(NS,'g');g.setAttribute('class','node'+(p.km==null?' unk':''));g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',p.n+(p.km!=null?', '+p.km+' kilometres':''));g.dataset.id=p.id;
-    g.innerHTML=`<circle class="halo" cx="${x}" cy="${y}" r="20"/><circle class="dot" cx="${x}" cy="${y}" r="9"/><circle cx="${x}" cy="${y}" r="28" fill="transparent"/><text x="${x+(left?-16:16)}" y="${y+5}" text-anchor="${left?'end':'start'}">${p.n.replace(' Waterfall','').replace(' Falls','').replace(' Trek','')}</text>`;
+    g.innerHTML=`<circle class="halo" cx="${x}" cy="${y}" r="20"/><circle class="dot" cx="${x}" cy="${y}" r="9"/><circle cx="${x}" cy="${y}" r="28" fill="transparent"/><text class="lab" x="${x+(left?-16:16)}" y="${y+5}" text-anchor="${left?'end':'start'}">${p.n.replace(' Waterfall','').replace(' Falls','').replace(' Trek','')}</text><text class="num" x="${x}" y="${y+7}" text-anchor="middle">${i+1}</text>`;
     g.onclick=()=>pick(p.id);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(p.id)}};
     nodes.appendChild(g);
-    const b=document.createElement('button');b.dataset.id=p.id;b.innerHTML=`<span>${p.n}</span><em>${p.km!=null?p.km+' km':'ask us'}</em>`;b.onclick=()=>pick(p.id);list.appendChild(b)});
+    const b=document.createElement('button');b.dataset.id=p.id;b.innerHTML=`<span><i class="ix">${i+1}</i>${p.n}</span><em>${p.km!=null?p.km+' km':'ask us'}</em>`;b.onclick=()=>pick(p.id);list.appendChild(b)});
   [['all','All'],['water','Waterfalls'],['trek','Treks & hills'],['town','Towns']].forEach(([k,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('role','tab');b.className=k==='all'?'on':'';b.onclick=()=>{filter=k;[...chips.children].forEach(c=>c.classList.toggle('on',c===b));apply();if(sel&&k!=='all'&&P.find(x=>x.id===sel).t!==k)pick(P.find(x=>k==='all'||x.t===k).id)};chips.appendChild(b)});
   function apply(){const show=p=>filter==='all'||p.t===filter;nodes.querySelectorAll('.node').forEach(n=>n.classList.toggle('dim',!show(P.find(p=>p.id===n.dataset.id))));list.querySelectorAll('button').forEach(b=>b.classList.toggle('hide',!show(P.find(p=>p.id===b.dataset.id))))}
   function count(el,to){if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=to;return}let s=null;const st=ts=>{s??=ts;const q=Math.min((ts-s)/700,1),v=to*(1-Math.pow(1-q,3));el.textContent=to%1?v.toFixed(1):Math.round(v);if(q<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
@@ -45,5 +45,16 @@
     const msg=encodeURIComponent(`Hi Tavasz, I'm planning a stay at River Hill and want to visit ${p.n}. Can you help with the route and timing?`);
     panel.innerHTML=`<span class="mono">${{water:'Waterfall',trek:'Trek / hills',town:'Town'}[p.t]}</span><h3>${p.n}</h3><div class="big-km">${p.km!=null?'<span id="kmv">0</span><small>km</small>':'<span style="font-size:.5em">Ask us</span>'}</div><span class="src">${p.src}</span><p>${p.d}</p><a class="btn solid" target="_blank" rel="noopener" href="https://wa.me/${T.wa}?text=${msg}">Plan this trip on WhatsApp</a>`;
     if(p.km!=null)count(document.getElementById('kmv'),p.km)}
+  // On phones, zoom the drawing to its own content so it fills the full width instead of sitting small in a wide frame.
+  const box=svg.parentElement,wideVB='-150 0 930 600',phone=matchMedia('(max-width:700px)');
+  function fit(){
+    svg.setAttribute('viewBox',wideVB);
+    if(!phone.matches){box.style.aspectRatio='930/600';return}
+    const b=nodes.getBBox(),pad=16;
+    const x0=Math.min(b.x,270)-pad,y0=Math.min(b.y,270)-pad,x1=Math.max(b.x+b.width,330)+pad,y1=Math.max(b.y+b.height,354)+pad;
+    svg.setAttribute('viewBox',`${x0} ${y0} ${x1-x0} ${y1-y0}`);
+    box.style.aspectRatio=`${x1-x0}/${y1-y0}`;
+  }
+  fit();addEventListener('resize',fit);
   pick('ar');
 })();
