@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sadutdy.github.io/tavasz-website/sitemap.xml

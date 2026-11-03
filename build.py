@@ -4,7 +4,7 @@
 Edit the data below, run `python3 build.py`, commit. Shared look is in assets/site.css + assets/extra.css,
 shared behaviour in assets/site.js. Only the River Hill page loads assets/map.js.
 """
-import json, os
+import datetime, json, os, struct
 from html import escape as esc
 from urllib.parse import quote
 
@@ -12,13 +12,43 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 WA = "919072818506"                      # WhatsApp number for every booking button (country code, no +)
 PHONES = [("+91 90728 18506", "+919072818506"), ("+91 96564 41064", "+919656441064")]
 IG = "https://www.instagram.com/tavasz.co/"
+SITE = "https://sadutdy.github.io/tavasz-website"   # change to https://tavasz.co once the domain is connected, then rebuild
+TODAY = datetime.date.today().isoformat()
+
+
+def jpeg_size(path):
+    """Width and height of a JPEG, read from its header (no image library needed)."""
+    try:
+        with open(path, "rb") as f:
+            f.read(2)
+            while True:
+                b = f.read(1)
+                while b and b != b"\xff":
+                    b = f.read(1)
+                while b == b"\xff":
+                    b = f.read(1)
+                if not b:
+                    return None
+                if 0xC0 <= b[0] <= 0xCF and b[0] not in (0xC4, 0xC8, 0xCC):
+                    f.read(3)
+                    h, w = struct.unpack(">HH", f.read(4))
+                    return w, h
+                f.seek(struct.unpack(">H", f.read(2))[0] - 2, 1)
+    except (OSError, struct.error):
+        return None
+
+
+def dim(rel_path):
+    """width/height attributes for an image path relative to the site root, so the page does not jump while loading."""
+    s = jpeg_size(os.path.join(ROOT, rel_path))
+    return f' width="{s[0]}" height="{s[1]}"' if s else ""
 
 # ------------------------------------------------------------------ property data
 RH = dict(
     slug="river-hill", name="River Hill", full="River Hill by Tavasz", dir="img/river-hill",
     place="Anakkampoyil, Thiruvambady, Kozhikode",
     address="Near Christian Church, Karimbu Road, Anakkampoyil, Kozhikode 673603, Kerala",
-    title="River Hill by Tavasz | Resort stay in Anakkampoyil, Kozhikode",
+    title="River Hill by Tavasz | Resort in Anakkampoyil, Kozhikode",
     desc="River Hill by Tavasz: cottages, a pool deck, private river access and a play area near Aripara waterfall, Anakkampoyil, Kozhikode. Book on WhatsApp.",
     h1='River Hill,<br>above the <em>clouds.</em>',
     lead="Cottages in the trees, a pool deck, private river access and room for up to 20 guests. Hidden in the Western Ghats foothills near Aripara waterfall.",
@@ -49,13 +79,14 @@ RH = dict(
         ("The hills behind", "See how green and quiet the setting is before you book.")],
         clips=[("fly-over", "Fly-over"), ("reel", "Tavasz reel")]),
     ld=dict(name="River Hill by Tavasz", addr="Anakkampoyil", region="Kozhikode", zip="673603", lat=11.4310625, lng=76.0864375),
+    price_range="INR 1000 - 22000", rooms=4,
 )
 MJ = dict(
     slug="manjumala-resort", name="Manjumala Resort", full="Manjumala Resort by Tavasz", dir="img/manjumala",
     place="Kodanchery, Thusharagiri, Kozhikode",
     address="Thusharagiri, Kodanchery, Kozhikode 673580, Kerala",
-    title="Manjumala Resort by Tavasz | Pool resort near Thusharagiri, Kozhikode",
-    desc="Manjumala Resort by Tavasz: a big swimming pool, mud football turf, terrace hall and rooms for groups near Thusharagiri waterfalls, Kodanchery, Kozhikode. Book on WhatsApp.",
+    title="Manjumala Resort by Tavasz | Pool stay near Thusharagiri",
+    desc="Manjumala Resort by Tavasz: 16 m pool, mud football turf, terrace hall and rooms for groups up to 60, 3.3 km from Thusharagiri falls. Book on WhatsApp.",
     h1='Manjumala,<br>by the <em>falls.</em>',
     lead="A 16 m pool, a mud football turf, a covered terrace hall and space for groups of up to 60. Just 3.3 km from Thusharagiri waterfalls.",
     hero=[("01", "Swimming pool"), ("03", "Pool from above"), ("09", "Kids' play area"),
@@ -86,6 +117,7 @@ MJ = dict(
         ("The green hills around", "Palms, forest and quiet roads close to the falls.")],
         clips=[("fly-over", "Fly-over")]),
     ld=dict(name="Manjumala Resort by Tavasz", addr="Thusharagiri, Kodanchery", region="Kozhikode", zip="673580", lat=11.4537369, lng=76.0483804),
+    price_range="INR 900 - 1000 per guest", rooms=6,
 )
 # gallery lists: (file number, caption)
 RH["gallery"] = [("01", "Pool deck"), ("02", "Lawn and play area"), ("03", "Garden cottage"), ("04", "Viewing deck"),
@@ -112,7 +144,15 @@ RULES = [
 
 
 # ------------------------------------------------------------------ shared pieces
-def head(title, desc, rel, ld=""):
+def head(title, desc, rel, ld="", path=None, og=None, noindex=False):
+    tags = ""
+    if noindex:
+        tags += '<meta name="robots" content="noindex">\n'
+    if path is not None:
+        tags += f'<link rel="canonical" href="{SITE}/{path}">\n<meta property="og:url" content="{SITE}/{path}">\n'
+    if og:
+        tags += f'<meta property="og:image" content="{SITE}/{og}">\n<meta name="twitter:image" content="{SITE}/{og}">\n'
+    tags += '<meta property="og:site_name" content="Tavasz">\n<meta name="twitter:card" content="summary_large_image">\n'
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -126,24 +166,24 @@ def head(title, desc, rel, ld=""):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:type" content="website">
+{tags}
 <link rel="stylesheet" href="{rel}assets/site.css">
 <link rel="stylesheet" href="{rel}assets/extra.css">
 {ld}
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas>
 '''
 
 
-def nav(rel, logo_name, logo_small, links):
+def nav(rel, logo_name, logo_small, links, home=None, book="#book"):
     a = "".join(f'<a href="{h}">{t}</a>' for t, h in links)
-    home = "#top" if rel == "" else "../"
+    home = home or ("#top" if rel == "" else "../")
     sm = f' <small style="font:500 12px ui-monospace,monospace;color:var(--mut);letter-spacing:.1em">{logo_small}</small>' if logo_small else ""
     return f'''<nav>
   <div class="wrap">
     <a class="logo" href="{home}"><img src="{rel}assets/logo.jpg" alt="" width="34" height="34">{esc(logo_name)}{sm}</a>
     <div class="links">{a}</div>
-    <a class="btn solid" href="#book">Book now</a>
+    <a class="btn solid" href="{book}">Book now</a>
   </div>
 </nav>
 '''
@@ -153,9 +193,9 @@ def hero(rel, slides, caps, eyebrow, h1, lead, ctas, hud, home=False):
     s = []
     for k, (src, alt) in enumerate(slides):
         if k == 0:
-            s.append(f'    <div class="s on"><img src="{rel}{src}" alt="{esc(alt)}" fetchpriority="high" decoding="async"></div>')
+            s.append(f'    <div class="s on"><img src="{rel}{src}" alt="{esc(alt)}" fetchpriority="high" decoding="async"{dim(src)}></div>')
         else:
-            s.append(f'    <div class="s"><img data-src="{rel}{src}" alt="{esc(alt)}" decoding="async"></div>')
+            s.append(f'    <div class="s"><img data-src="{rel}{src}" alt="{esc(alt)}" decoding="async"{dim(src)}></div>')
     hud_html = ""
     for kind, val, lab in hud:
         b = f'<b data-n="{val}">0</b>' if kind == "n" else f'<b>{esc(val)}</b>'
@@ -241,14 +281,21 @@ def property_page(p):
     caps = [c for _, c in p["hero"]]
     links = [("Stay", "#stay"), ("From above", "#flyover"), ("Rates", "#rates"), ("Gallery", "#gallery"), ("Nearby", "#nearby"), ("Book", "#book")]
     ld = json.dumps({
-        "@context": "https://schema.org", "@type": "Resort", "name": p["ld"]["name"],
-        "description": p["desc"], "image": f"{d}/{p['hero'][0][0]}.jpg",
-        "telephone": PHONES[0][1], "checkinTime": "15:00", "checkoutTime": "12:00",
+        "@context": "https://schema.org", "@type": "Resort", "name": p["ld"]["name"], "url": f"{SITE}/{p['slug']}/",
+        "description": p["desc"], "image": [f"{SITE}/{d}/{n}.jpg" for n, _ in p["hero"][:4]],
+        "logo": f"{SITE}/assets/logo.jpg", "telephone": PHONES[0][1], "priceRange": p["price_range"],
+        "numberOfRooms": p["rooms"], "petsAllowed": False, "checkinTime": "15:00", "checkoutTime": "12:00",
+        "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": a, "value": True} for a, _ in p["amen"]],
         "address": {"@type": "PostalAddress", "streetAddress": p["ld"]["addr"], "addressLocality": p["ld"]["region"],
                     "postalCode": p["ld"]["zip"], "addressRegion": "Kerala", "addressCountry": "IN"},
         "geo": {"@type": "GeoCoordinates", "latitude": p["ld"]["lat"], "longitude": p["ld"]["lng"]},
         "sameAs": [IG]})
-    out = head(p["title"], p["desc"], rel, f'<script type="application/ld+json">{ld}</script>')
+    bc = json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Tavasz", "item": f"{SITE}/"},
+        {"@type": "ListItem", "position": 2, "name": p["name"], "item": f"{SITE}/{p['slug']}/"}]})
+    out = head(p["title"], p["desc"], rel,
+               f'<script type="application/ld+json">{ld}</script>\n<script type="application/ld+json">{bc}</script>',
+               path=f'{p["slug"]}/', og=f'{d}/{p["hero"][0][0]}.jpg')
     out += nav(rel, p["name"], "BY TAVASZ", links)
     out += hero(rel, slides, caps, p["place"], p["h1"], p["lead"],
                 [("Check availability", "#book"), ("▶ Watch from above", "#flyover")], p["hud"])
@@ -256,7 +303,7 @@ def property_page(p):
     cards = ""
     for i, (n, t, desc) in enumerate(p["cards"], start=1):
         cards += (f'<article class="card rv"><div class="glow"></div><div class="art ph"><img src="{rel}{d}/th/{n}.jpg" '
-                  f'alt="{esc(t)} at {esc(p["name"])}" loading="lazy"></div><div class="body"><span class="mono">0{i}</span>'
+                  f'alt="{esc(t)} at {esc(p["name"])}" loading="lazy"{dim(f"{d}/th/{n}.jpg")}></div><div class="body"><span class="mono">0{i}</span>'
                   f'<h3>{esc(t)}</h3><p>{esc(desc)}</p></div></article>')
     amen = "".join(f"<li>{esc(a)}{f'<small>{esc(b)}</small>' if b else ''}</li>" for a, b in p["amen"])
     out += f'''<section id="stay">
@@ -312,7 +359,7 @@ def property_page(p):
 </section>
 '''
 
-    gal = "".join(f'<a href="{rel}{d}/{n}.jpg" data-lb><img src="{rel}{d}/th/{n}.jpg" alt="{esc(cap)} at {esc(p["name"])}" loading="lazy" '
+    gal = "".join(f'<a href="{rel}{d}/{n}.jpg" data-lb><img src="{rel}{d}/th/{n}.jpg" alt="{esc(cap)} at {esc(p["name"])}" loading="lazy"{dim(f"{d}/th/{n}.jpg")} '
                   f'style="width:100%;height:auto;display:block"><span>{esc(cap)}</span></a>' for n, cap in p["gallery"])
     out += f'''<section id="gallery">
   <div class="wrap">
@@ -352,7 +399,8 @@ def property_page(p):
 '''
 
     out += booking(None, "06")
-    out += footer(esc(p["full"]), esc(p["address"]), ' · <a href="../">All Tavasz stays</a>')
+    out += footer(esc(p["full"]), esc(p["address"]),
+                  ' · <a href="../">All Tavasz stays</a> · <a href="../terms/">Terms and house rules</a>')
     scripts = '<script src="../assets/site.js"></script>\n<script src="../assets/video.js"></script>' +('\n<script src="../assets/map.js"></script>' if p["map"] else "")
     out += tail(p["name"], scripts)
     return out
@@ -361,11 +409,11 @@ def property_page(p):
 # ------------------------------------------------------------------ home page
 def home_page():
     rel = ""
-    t = "Tavasz | Resort stays near Thusharagiri and Anakkampoyil, Kozhikode"
+    t = "Tavasz | Resort stays near Thusharagiri, Kozhikode"
     dsc = "Tavasz runs pool resorts and hill stays near Thusharagiri and Anakkampoyil in Kozhikode, Kerala. River Hill and Manjumala Resort. Book direct on WhatsApp."
     ld = json.dumps({"@context": "https://schema.org", "@type": "Organization", "name": "Tavasz", "description": dsc,
-                     "telephone": PHONES[0][1], "sameAs": [IG]})
-    out = head(t, dsc, rel, f'<script type="application/ld+json">{ld}</script>')
+                     "url": f"{SITE}/", "logo": f"{SITE}/assets/logo.jpg", "telephone": PHONES[0][1], "sameAs": [IG]})
+    out = head(t, dsc, rel, f'<script type="application/ld+json">{ld}</script>', path="", og="img/river-hill/02.jpg")
     out += nav(rel, "Tavasz", "", [("Stays", "#stays"), ("Why direct", "#direct"), ("Book", "#book")])
     slides = [("img/river-hill/02.jpg", "Lawn and play area at River Hill"), ("img/manjumala/01.jpg", "Swimming pool at Manjumala Resort"),
               ("img/river-hill/07.jpg", "Cottage with deer garden at River Hill"), ("img/manjumala/03.jpg", "Manjumala Resort pool from above"),
@@ -381,7 +429,7 @@ def home_page():
     def pcard(p, tags, frm):
         d = p["dir"]
         tg = "".join(f"<span>{esc(x)}</span>" for x in tags)
-        return (f'<a class="pcard rv" href="{p["slug"]}/"><div class="pimg"><img src="{d}/th/{p["hero"][0][0]}.jpg" alt="{esc(p["name"])}" loading="lazy"></div>'
+        return (f'<a class="pcard rv" href="{p["slug"]}/"><div class="pimg"><img src="{d}/th/{p["hero"][0][0]}.jpg" alt="{esc(p["name"])}" loading="lazy"{dim(f"{d}/th/{p['hero'][0][0]}.jpg")}></div>'
                 f'<div class="pbody"><span class="mono">{esc(p["place"])}</span><h3>{esc(p["name"])}</h3><p>{esc(p["lead"])}</p>'
                 f'<div class="tags">{tg}</div><div class="go"><span class="from">{frm}</span><span class="btn">View stay →</span></div></div></a>')
     c1 = pcard(RH, ["Kids' pool", "Private river", "Up to 20 guests", "Play area"], "Whole property <b>₹22,000</b>")
@@ -408,8 +456,65 @@ def home_page():
 '''
     out += booking(["River Hill", "Manjumala Resort"], "03")
     out += footer("Tavasz", "Pool resorts and hill stays<br>Kozhikode, Kerala",
-                  ' · <a href="river-hill/">River Hill</a> · <a href="manjumala-resort/">Manjumala Resort</a>')
+                  ' · <a href="river-hill/">River Hill</a> · <a href="manjumala-resort/">Manjumala Resort</a>'
+                  ' · <a href="terms/">Terms and house rules</a>')
     out += tail(None, '<script src="assets/site.js"></script>')
+    return out
+
+
+def terms_page():
+    rel = "../"
+    t = "Booking terms and house rules | Tavasz"
+    dsc = "Booking, rates, cancellation, check-in and house rules for Tavasz stays: River Hill and Manjumala Resort."
+    out = head(t, dsc, rel, path="terms/", og="img/river-hill/02.jpg")
+    out += nav(rel, "Tavasz", "", [("Stays", "../#stays"), ("Book", "../#book")], book="../#book")
+
+    def rate_items(p):
+        r = "".join(f"<li><b>{esc(a)}</b>: {esc(b)}{esc(u)}. {esc(s)}</li>" for a, b, u, s in p["rates"])
+        r += "".join(f"<li><b>{esc(a)}</b>: {esc(b)}</li>" for a, b in p["extras"])
+        return r
+    rates = "".join(f'<div class="box rv"><h3>{esc(p["name"])}</h3><ul>{rate_items(p)}</ul></div>' for p in PROPS)
+    rules = "".join(f"<li>{x}</li>" for x in RULES)
+    ph = " · ".join(f'<a href="tel:{tel}" style="color:var(--g)">{d}</a>' for d, tel in PHONES)
+    out += f'''<section style="padding-top:130px">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-h rv"><span class="mono">Terms</span><h1 style="font-size:clamp(34px,5vw,56px);margin:12px 0 14px">Booking terms and house rules.</h1><p>Short and plain. Last updated {TODAY}.</p></div>
+    <div style="display:grid;gap:22px">
+      <div class="box rv"><h3>How booking works</h3><p>Send your dates and group size on WhatsApp or use the form on any property page. We confirm availability and the final amount before you pay. Nothing on this website takes a payment.</p></div>
+      <div class="two">{rates}</div>
+      <div class="box rv"><h3>Check-in, check-out and cancellation</h3><ul><li><b>Check-in:</b> 3 PM</li><li><b>Check-out:</b> 12 PM</li><li><b>Cancellation:</b> no refunds. You can change your dates.</li></ul></div>
+      <div class="box rv"><h3>House rules</h3><ul>{rules}</ul></div>
+      <div class="box rv"><h3>Your details</h3><p>We use your name, dates and group size only to answer your booking. The form opens WhatsApp with your message ready to send and does not store anything on this site. This site does not use cookies or tracking tools.</p></div>
+      <div class="box rv"><h3>Contact</h3><p>{ph}<br>Instagram: <a href="{IG}" target="_blank" rel="noopener" style="color:var(--g)">@tavasz.co</a></p></div>
+    </div>
+    <p style="margin-top:30px"><a class="btn" href="../">← Back to all stays</a></p>
+  </div>
+</section>
+'''
+    out += footer("Tavasz", "Pool resorts and hill stays<br>Kozhikode, Kerala",
+                  ' · <a href="../river-hill/">River Hill</a> · <a href="../manjumala-resort/">Manjumala Resort</a>')
+    out += tail(None, '<script src="../assets/site.js"></script>')
+    return out
+
+
+def notfound_page():
+    rel = SITE + "/"   # served from any path, so assets and links must be absolute
+    out = head("Page not found | Tavasz", "This page does not exist. Go back to Tavasz stays.", rel, noindex=True)
+    out += nav(rel, "Tavasz", "", [("River Hill", rel + "river-hill/"), ("Manjumala", rel + "manjumala-resort/")],
+               home=rel, book=rel + "#book")
+    out += f'''<section style="padding-top:150px;min-height:80vh">
+  <div class="wrap" style="max-width:720px">
+    <span class="mono">// 404</span>
+    <h1 style="font-size:clamp(40px,7vw,80px);margin:14px 0 16px">This page took a <em style="font-style:normal;color:var(--g)">wrong turn.</em></h1>
+    <p style="color:var(--mut);font-size:18px;max-width:520px">The link may be old or mistyped. Pick a stay below or message us on WhatsApp.</p>
+    <div class="cta" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:30px">
+      <a class="btn solid" href="{rel}">Tavasz home</a><a class="btn" href="{rel}river-hill/">River Hill</a><a class="btn" href="{rel}manjumala-resort/">Manjumala Resort</a>
+    </div>
+  </div>
+</section>
+'''
+    out += footer("Tavasz", "Pool resorts and hill stays<br>Kozhikode, Kerala")
+    out += tail(None, f'<script src="{rel}assets/site.js"></script>')
     return out
 
 
@@ -430,3 +535,9 @@ if __name__ == "__main__":
     write("index.html", home_page())
     for p in PROPS:
         write(f'{p["slug"]}/index.html', property_page(p))
+    write("terms/index.html", terms_page())
+    write("404.html", notfound_page())
+    urls = ["", *[f'{p["slug"]}/' for p in PROPS], "terms/"]
+    write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+          + "".join(f"  <url><loc>{SITE}/{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")

@@ -9,7 +9,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif;line-height:1.05;letter-spacing:-.02em}
 .mono{font-family:ui-monospace,"JetBrains Mono",Menlo,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--g)}
-#bg{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 70% at 85% 0%,rgba(23,201,122,.16),transparent 60%),radial-gradient(90% 60% at 0% 100%,rgba(15,61,42,.5),transparent 65%)}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,10,8,.55);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:"Space Grotesk",sans-serif;font-size:20px}
