@@ -57,10 +57,10 @@ MJ = dict(
     title="Manjumala Resort by Tavasz | Pool resort near Thusharagiri, Kozhikode",
     desc="Manjumala Resort by Tavasz: a big swimming pool, mud football turf, terrace hall and rooms for groups near Thusharagiri waterfalls, Kodanchery, Kozhikode. Book on WhatsApp.",
     h1='Manjumala,<br>by the <em>falls.</em>',
-    lead="A 16 m pool, a mud football turf, a covered terrace hall and space for groups of up to 48. Just 3.3 km from Thusharagiri waterfalls.",
+    lead="A 16 m pool, a mud football turf, a covered terrace hall and space for groups of up to 60. Just 3.3 km from Thusharagiri waterfalls.",
     hero=[("01", "Swimming pool"), ("03", "Pool from above"), ("09", "Kids' play area"),
           ("07", "Carrom on the terrace"), ("02", "Pool in daylight"), ("19", "Guest wing at night")],
-    hud=[("n", "6", "rooms, plus dormitory"), ("n", "48", "guests, max capacity"), ("t", "16 m", "swimming pool"), ("t", "3 PM", "check-in"), ("t", "12 PM", "check-out")],
+    hud=[("n", "6", "rooms, plus dormitory"), ("n", "60", "guests, max capacity"), ("t", "16 m", "swimming pool"), ("t", "3 PM", "check-in"), ("t", "12 PM", "check-out")],
     cards=[("01", "Big swimming pool", "16 m by 7 m, with a separate kids' pool (6 m by 3 m) and a slide."),
            ("06", "Terrace hall", "A large covered terrace with carrom, speaker and mic. Good for groups."),
            ("10", "Rooms and dormitory", "6 rooms, 5 with attached bathrooms, plus a dormitory for 11 adults."),
@@ -72,8 +72,8 @@ MJ = dict(
           ("Kids' play area", ""), ("Carrom", ""), ("Barbecue grill", ""), ("Parking", ""), ("Wi-Fi", ""),
           ("6 rooms", "5 with attached bathrooms"), ("Dormitory", "11 adults"), ("3 outside bathrooms", ""),
           ("Kitchen", "₹500 extra"), ("Breakfast", ""), ("Homely night food", "Paid"), ("Fridge", ""), ("Extra beds", "If needed")],
-    rates=[("Per person", "₹900", "/ guest", "Guests above 10 years. Kids 6 to 12 years: ₹400."),
-           ("Whole property", "Ask us", "", "Up to 48 guests. Send your dates and group size for a quote.")],
+    rates=[("25 or more guests", "₹900", "/ guest", "Our best rate for bigger groups, up to 60 guests. Kids 6 to 12 years: ₹400."),
+           ("Under 25 guests", "₹1,000", "/ guest", "Per person for smaller groups. Kids 6 to 12 years: ₹400.")],
     extras=[("Campfire setup", "₹500"), ("Kitchen use", "₹500"), ("Night food", "Paid, ask us"), ("Extra beds", "On request")],
     food=("Breakfast (vegetarian)", ["Appam, puttu or upma", "Kadala curry, green peas, cherupayar", "Tea"],
           "Homely night food is available at extra cost."),
@@ -385,7 +385,7 @@ def home_page():
                 f'<div class="pbody"><span class="mono">{esc(p["place"])}</span><h3>{esc(p["name"])}</h3><p>{esc(p["lead"])}</p>'
                 f'<div class="tags">{tg}</div><div class="go"><span class="from">{frm}</span><span class="btn">View stay →</span></div></div></a>')
     c1 = pcard(RH, ["Kids' pool", "Private river", "Up to 20 guests", "Play area"], "Whole property <b>₹22,000</b>")
-    c2 = pcard(MJ, ["16 m pool", "Mud turf", "Up to 48 guests", "Terrace hall"], "From <b>₹900</b> per guest")
+    c2 = pcard(MJ, ["16 m pool", "Mud turf", "Up to 60 guests", "Terrace hall"], "<b>₹900</b> per guest for 25 or more")
     out += f'''<section id="stays">
   <div class="wrap">
     <div class="sec-h rv"><span class="mono">01 / Stays</span><h2>Choose your hideout.</h2><p>Each property is booked as a whole for your group. Rates are shown on each page.</p></div>
