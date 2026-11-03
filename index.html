@@ -3,221 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>River Hill by Tavasz | Resort stay in Anakkampoyil, Kozhikode</title>
-<meta name="description" content="River Hill by Tavasz: cottages, villas and tent stays near Aripara waterfall, Anakkampoyil, Kozhikode. Book on WhatsApp.">
-<style>
-:root{
-  --bg:#050a08; --card:rgba(255,255,255,.04); --line:rgba(120,255,190,.16);
-  --g:#3dffa0; --g2:#17c97a; --deep:#0f3d2a; --txt:#e8f5ee; --mut:#8aa89a; --amber:#ffd36b;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif;line-height:1.05;letter-spacing:-.02em}
-.mono{font-family:ui-monospace,"JetBrains Mono",Menlo,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--g)}
-#bg{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,10,8,.55);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-family:"Space Grotesk",sans-serif;font-size:20px}
-.logo i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--g),var(--deep));box-shadow:0 0 18px var(--g2)}
-.links{display:flex;gap:26px;font-size:14px;color:var(--mut)}
-.links a:hover{color:var(--g)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;border:1px solid var(--g);color:var(--g);background:rgba(61,255,160,.06);transition:.25s;cursor:pointer;font-family:inherit}
-.btn:hover{background:var(--g);color:#032014;box-shadow:0 0 28px rgba(61,255,160,.5)}
-.btn.solid{background:var(--g);color:#032014;box-shadow:0 0 24px rgba(61,255,160,.35)}
-.btn.solid:hover{background:#fff}
-header.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden;isolation:isolate}
-header.hero>.wrap{position:relative;z-index:3}
-.hc{position:absolute;inset:0;z-index:0;background:#050a08;touch-action:pan-y}
-.hc .s{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.hc .s.on{opacity:1}
-.hc .s img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
-.hc .s.on img{animation:kb 9s ease-out forwards}
-@keyframes kb{to{transform:scale(1.12)}}
-.hc::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,10,8,.72) 0%,rgba(5,10,8,.38) 38%,rgba(5,10,8,.82) 100%),linear-gradient(90deg,rgba(5,10,8,.6),transparent 70%)}
-.hc-ui{position:absolute;left:0;right:0;bottom:max(18px,env(safe-area-inset-bottom));z-index:4;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 20px;max-width:1180px;margin:0 auto;pointer-events:none}
-.hc-ui>*{pointer-events:auto}
-.dots{display:flex;gap:8px}
-.dots button{width:28px;height:28px;display:grid;place-items:center;background:none;border:0;cursor:pointer;padding:0}
-.dots button::before{content:"";width:22px;height:3px;border-radius:3px;background:rgba(255,255,255,.35);transition:.3s}
-.dots button.on::before{background:var(--g);width:34px;box-shadow:0 0 10px var(--g)}
-.hc-cap{font:11px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75)}
-.hc-nav{display:none;gap:10px}
-.hc-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(5,10,8,.55);color:var(--g);font-size:18px;cursor:pointer;backdrop-filter:blur(8px)}
-.hc-nav button:hover{background:var(--g);color:#032014}
-@media(hover:hover) and (min-width:900px){.hc-nav{display:flex}}
-header.hero{padding-bottom:84px}
-.hero p.lead{color:#cfe3d8;text-shadow:0 1px 14px rgba(0,0,0,.7)}
-.hero h1{text-shadow:0 2px 24px rgba(0,0,0,.55)}
-.book>*,form>*{min-width:0}
-input,select{min-width:0;-webkit-appearance:none;appearance:none;font-size:16px}
-input[type=date]{min-height:50px}
-html,body{max-width:100%;overflow-x:hidden}
-@media(max-width:700px){
-  form{grid-template-columns:1fr}
-  .hero .cta .btn{white-space:nowrap;padding:12px 10px;font-size:13.5px}
-  .hc-cap{display:none}.hc-ui{justify-content:center}
-  .logo small{display:none}
-  nav .wrap{height:58px}.logo{font-size:18px}
-  nav .btn{padding:10px 16px;font-size:13px}
-  .hero .cta .btn{flex:1;justify-content:center}
-  .hero h1{font-size:clamp(40px,12.5vw,60px)}
-  .hud{margin-top:36px}.hud div{padding:14px 16px}.hud b{font-size:24px}
-}
-.hero h1{font-size:clamp(44px,8.5vw,112px);margin:18px 0 22px}
-.hero h1 em{font-style:normal;background:linear-gradient(95deg,var(--g),#9bffd6 50%,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{max-width:560px;color:var(--mut);font-size:18px}
-.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-.hud{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
-.hud div{background:rgba(5,10,8,.8);padding:20px 22px}
-.hud b{display:block;font:700 30px "Space Grotesk",sans-serif;color:var(--g)}
-.hud span{font-size:13px;color:var(--mut)}
-.scan{position:absolute;right:4%;top:22%;width:min(34vw,420px);aspect-ratio:1;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;opacity:.9}
-.scan::before,.scan::after{content:"";position:absolute;inset:12%;border-radius:50%;border:1px dashed rgba(61,255,160,.25);animation:spin 40s linear infinite}
-.scan::after{inset:28%;animation-duration:25s;animation-direction:reverse}
-.scan .core{width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--g),transparent 70%);filter:blur(2px);animation:pulse 4s ease-in-out infinite}
-.scan .tag{position:absolute;font-size:11px;padding:4px 10px;border:1px solid var(--line);border-radius:99px;background:rgba(5,10,8,.8);color:var(--g);font-family:ui-monospace,monospace}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{50%{transform:scale(1.25);opacity:.7}}
-section{padding:110px 0;position:relative}
-.sec-h{max-width:640px;margin-bottom:54px}
-.sec-h h2{font-size:clamp(34px,5vw,60px);margin:12px 0 14px}
-.sec-h p{color:var(--mut)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{position:relative;border:1px solid var(--line);background:var(--card);border-radius:22px;overflow:hidden;transition:transform .15s ease,border-color .3s,opacity .8s;transform-style:preserve-3d;will-change:transform}
-.card:hover{border-color:var(--g)}
-.card .art{height:190px;position:relative;overflow:hidden}
-.card .art svg{position:absolute;inset:0;width:100%;height:100%}
-.card .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.card:hover .art img{transform:scale(1.07)}
-.card .art img[src$="hut.jpg"]{object-position:50% 76%}
-.card .art img[src$="campfire.jpg"]{object-position:50% 80%}
-.card .art.ph::after{display:none}
-.card .art.ph::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 55%,rgba(5,10,8,.75))}
-.big>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.big::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,10,8,.1) 30%,rgba(5,10,8,.88))}
-.big .cap{z-index:1}
-.card .art::after{content:"PHOTO SLOT";position:absolute;right:12px;top:12px;font:600 10px ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.25);padding:3px 8px;border-radius:99px;background:rgba(0,0,0,.35)}
-.card .body{padding:22px 24px 26px}
-.card h3{font-size:24px;margin:6px 0 8px}
-.card p{color:var(--mut);font-size:14.5px}
-.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:13px;color:var(--mut)}
-.card .row a{color:var(--g);font-weight:600}
-.glow{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;transition:.3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(61,255,160,.16),transparent 45%)}
-.card:hover .glow{opacity:1}
-.exp{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:stretch}
-.big{border:1px solid var(--line);border-radius:28px;min-height:420px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0c2a1f,#06110c 60%)}
-.big svg{position:absolute;inset:0;width:100%;height:100%}
-.big .cap{position:absolute;left:28px;bottom:26px;right:28px}
-.big .cap h3{font-size:34px}
-.list{display:flex;flex-direction:column;gap:14px}
-.item{display:flex;gap:16px;padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--card);transition:.25s}
-.item:hover{border-color:var(--g);transform:translateX(6px)}
-.item .ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(61,255,160,.1);color:var(--g);font-size:20px}
-.item h4{font:600 17px "Space Grotesk",sans-serif}
-.item p{font-size:14px;color:var(--mut)}
-.chips{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;margin-bottom:22px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chips button{flex:none;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mut);font:600 14px inherit;font-family:inherit;cursor:pointer;transition:.25s}
-.chips button.on{background:var(--g);color:#032014;border-color:var(--g);box-shadow:0 0 22px rgba(61,255,160,.35)}
-.mapw{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch}
-.mapbox{border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 50% 50%,rgba(61,255,160,.09),rgba(5,10,8,.6) 70%);overflow:hidden;aspect-ratio:930/600;touch-action:manipulation}
-#mapSvg{width:100%;height:100%;display:block}
-#mapSvg text{font-family:ui-monospace,Menlo,monospace;fill:#cfe3d8;pointer-events:none}
-.ring{fill:none;stroke:rgba(120,255,190,.18);stroke-dasharray:3 6}
-.rlab{font-size:13px;fill:#6f9484!important}
-.sweep{transform-origin:300px 300px;animation:sw 7s linear infinite}
-@keyframes sw{to{transform:rotate(360deg)}}
-.ripple{fill:none;stroke:#3dffa0;transform-origin:300px 300px;animation:rp 3.2s ease-out infinite}
-.ripple:nth-of-type(2){animation-delay:1.6s}
-@keyframes rp{0%{transform:scale(.4);opacity:.9}100%{transform:scale(3.6);opacity:0}}
-.topo{fill:none;stroke:rgba(61,255,160,.07);stroke-width:1.4;animation:drift 18s ease-in-out infinite alternate}
-@keyframes drift{to{transform:translate(8px,-6px)}}
-.node{cursor:pointer;outline:none}
-.node .dot{fill:#0a1411;stroke:#3dffa0;stroke-width:2;transition:.3s}
-.node .halo{fill:#3dffa0;opacity:0;transition:.3s}
-.node.on .dot{fill:#3dffa0}.node.on .halo{opacity:.25;animation:pul 1.8s ease-in-out infinite}
-.node:hover .dot,.node:focus-visible .dot{fill:#3dffa0}
-.node.dim{opacity:.18;pointer-events:none}
-.node.unk .dot{stroke-dasharray:3 3}
-.node text{font-size:17px;font-weight:600}
-@media(max-width:700px){.node text{font-size:25px}.rlab{font-size:20px}#mapSvg text.rt{font-size:26px}}
-@keyframes pul{50%{transform:scale(1.35)}}
-.node .halo{transform-box:fill-box;transform-origin:center}
-.route{fill:none;stroke:#3dffa0;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.1s ease-out forwards;filter:drop-shadow(0 0 6px #3dffa0)}
-@keyframes dr{to{stroke-dashoffset:0}}
-.mpanel{border:1px solid var(--line);border-radius:28px;padding:30px 28px;background:var(--card);display:flex;flex-direction:column;gap:14px}
-.mpanel .big-km{font:700 clamp(52px,7vw,84px)/1 "Space Grotesk",sans-serif;color:var(--g);letter-spacing:-.03em}
-.mpanel .big-km small{font-size:.32em;color:var(--mut);margin-left:6px;letter-spacing:0}
-.mpanel h3{font-size:30px}
-.mpanel p{color:var(--mut);font-size:15px}
-.mpanel .src{font:11px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6f9484}
-.mpanel .btn{margin-top:auto;justify-content:center}
-.mlist{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.mlist button{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:52px;padding:10px 16px;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--txt);font:600 14px inherit;font-family:inherit;text-align:left;cursor:pointer;transition:.25s}
-.mlist button em{font:normal 12px ui-monospace,monospace;color:var(--g);white-space:nowrap}
-.mlist button.on{border-color:var(--g);background:rgba(61,255,160,.1)}
-.mlist button.hide{display:none}
-.mlist button{min-width:0}.mapw>*{min-width:0}
-@media(max-width:900px){.mapw{grid-template-columns:minmax(0,1fr)}.mlist{grid-template-columns:repeat(2,minmax(0,1fr))}.mpanel{padding:22px}.mpanel h3{font-size:26px}}
-.nearby{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory}
-.nearby::-webkit-scrollbar{height:6px}.nearby::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
-.pin{flex:none;width:250px;scroll-snap-align:start;border:1px solid var(--line);border-radius:20px;padding:22px;background:var(--card)}
-.pin .mono{display:block;margin-bottom:34px}
-.pin h4{font:600 20px "Space Grotesk",sans-serif}
-.pin p{font-size:13.5px;color:var(--mut);margin-top:6px}
-.ig{column-count:4;column-gap:12px}
-.ig a{display:block;margin-bottom:12px;break-inside:avoid;border-radius:16px;position:relative;overflow:hidden;border:1px solid var(--line);transition:.3s;cursor:zoom-in}
-.ig a img{transition:transform .6s;width:100%;height:auto!important;object-fit:initial!important}.ig a:hover img{transform:scale(1.04)}
-.ig a:hover{border-color:var(--g)}
-#lb{position:fixed;inset:0;z-index:100;background:rgba(3,7,5,.94);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
-#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 0 60px rgba(61,255,160,.25)}
-.ig a svg{width:100%;height:100%;display:block}
-.ig a span{position:absolute;left:12px;bottom:10px;font:11px ui-monospace,monospace;color:#fff;text-shadow:0 1px 6px #000}
-.book{border:1px solid var(--line);border-radius:30px;padding:48px;background:linear-gradient(140deg,rgba(61,255,160,.09),rgba(5,10,8,.8) 55%);display:grid;grid-template-columns:1fr 1.1fr;gap:44px}
-.book h2{font-size:clamp(32px,4.4vw,54px);margin:12px 0 14px}
-.book p{color:var(--mut)}
-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-form .full{grid-column:1/-1}
-label{font:11px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:6px}
-input,select{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.4);color:var(--txt);font:inherit;outline:none;color-scheme:dark}
-input:focus,select:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(61,255,160,.15)}
-.note{font-size:12px;color:var(--mut);margin-top:6px}
-footer{border-top:1px solid var(--line);padding:46px 0 90px;color:var(--mut);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-footer b{color:var(--txt)}
-.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--g);color:#032014;display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 0 rgba(61,255,160,.6);animation:ring 2.4s infinite}
-@keyframes ring{70%{box-shadow:0 0 0 22px rgba(61,255,160,0)}100%{box-shadow:0 0 0 0 rgba(61,255,160,0)}}
-.rv{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media(max-width:900px){
-  .links{display:none}.grid{grid-template-columns:1fr}.exp,.book{grid-template-columns:1fr}.book{padding:28px}
-  .hud{grid-template-columns:1fr 1fr}.scan{display:none}.ig{column-count:2} section{padding:76px 0}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-</style>
+<title>Tavasz | Resort stays near Thusharagiri and Anakkampoyil, Kozhikode</title>
+<meta name="description" content="Tavasz runs pool resorts and hill stays near Thusharagiri and Anakkampoyil in Kozhikode, Kerala. River Hill and Manjumala Resort. Book direct on WhatsApp.">
+<meta name="theme-color" content="#050a08">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<meta property="og:title" content="Tavasz | Resort stays near Thusharagiri and Anakkampoyil, Kozhikode">
+<meta property="og:description" content="Tavasz runs pool resorts and hill stays near Thusharagiri and Anakkampoyil in Kozhikode, Kerala. River Hill and Manjumala Resort. Book direct on WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/extra.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Tavasz", "description": "Tavasz runs pool resorts and hill stays near Thusharagiri and Anakkampoyil in Kozhikode, Kerala. River Hill and Manjumala Resort. Book direct on WhatsApp.", "telephone": "+919072818506", "sameAs": ["https://www.instagram.com/tavasz.co/"]}</script>
 </head>
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
-
 <nav>
   <div class="wrap">
-    <a class="logo" href="#top"><i></i>River Hill <small style="font:500 12px ui-monospace,monospace;color:var(--mut);letter-spacing:.1em">BY TAVASZ</small></a>
-    <div class="links"><a href="#stays">Stays</a><a href="#experience">Experience</a><a href="#nearby">Nearby</a><a href="#gallery">Gallery</a><a href="#book">Book</a></div>
+    <a class="logo" href="#top"><img src="assets/logo.jpg" alt="" width="34" height="34">Tavasz</a>
+    <div class="links"><a href="#stays">Stays</a><a href="#direct">Why direct</a><a href="#book">Book</a></div>
     <a class="btn solid" href="#book">Book now</a>
   </div>
 </nav>
-
-<header class="hero" id="top">
-  <div class="hc" id="hc" aria-roledescription="carousel" aria-label="River Hill photos">
-    <div class="s on"><img src="img/hero/p10.jpg" alt="Swimming pool with hill view at River Hill" fetchpriority="high" decoding="async"></div>
-    <div class="s"><img data-src="img/hero/ig-riverhill.jpg" alt="River Hill main house" decoding="async"></div>
-    <div class="s"><img data-src="img/hero/p3.jpg" alt="Villa on a rock" decoding="async"></div>
-    <div class="s"><img data-src="img/hero/p4.jpg" alt="Bedroom with forest view" decoding="async"></div>
-    <div class="s"><img data-src="img/hero/p1.jpg" alt="Garden cottage" decoding="async"></div>
-    <div class="s"><img data-src="img/hero/p5.jpg" alt="Viewing deck and swing" decoding="async"></div>
+<header class="hero home" id="top">
+  <div class="hc" id="hc" data-caps="[&quot;River Hill \u00b7 Anakkampoyil&quot;, &quot;Manjumala Resort \u00b7 Thusharagiri&quot;, &quot;River Hill \u00b7 Anakkampoyil&quot;, &quot;Manjumala Resort \u00b7 Thusharagiri&quot;, &quot;River Hill \u00b7 Anakkampoyil&quot;, &quot;Manjumala Resort \u00b7 Thusharagiri&quot;]" aria-roledescription="carousel" aria-label="Photos">
+    <div class="s on"><img src="img/river-hill/02.jpg" alt="Lawn and play area at River Hill" fetchpriority="high" decoding="async"></div>
+    <div class="s"><img data-src="img/manjumala/01.jpg" alt="Swimming pool at Manjumala Resort" decoding="async"></div>
+    <div class="s"><img data-src="img/river-hill/07.jpg" alt="Cottage with deer garden at River Hill" decoding="async"></div>
+    <div class="s"><img data-src="img/manjumala/03.jpg" alt="Manjumala Resort pool from above" decoding="async"></div>
+    <div class="s"><img data-src="img/river-hill/04.jpg" alt="Viewing deck at River Hill" decoding="async"></div>
+    <div class="s"><img data-src="img/manjumala/02.jpg" alt="Manjumala Resort pool in daylight" decoding="async"></div>
   </div>
   <div class="hc-ui">
     <div class="dots" id="hcDots"></div>
@@ -225,218 +39,63 @@ footer b{color:var(--txt)}
     <div class="hc-nav"><button id="hcPrev" aria-label="Previous photo">←</button><button id="hcNext" aria-label="Next photo">→</button></div>
   </div>
   <div class="wrap">
-    <span class="mono">// Anakkampoyil · Kozhikode · Kerala</span>
-    <h1>River Hill,<br>above the <em>clouds.</em></h1>
-    <p class="lead">Private cottages, couple villas, tent stays and a hill-view pool, hidden in the Western Ghats foothills. Pick your stay, send one WhatsApp message, done.</p>
-    <div class="cta">
-      <a class="btn solid" href="#book">Check availability</a>
-      <a class="btn" href="#stays">Explore stays</a>
-    </div>
-    <div class="hud">
-      <div><b data-n="6">0</b><span>stay types</span></div>
-      <div><b>Pool</b><span>with hill view</span></div>
-      <div><b>River</b><span>and waterfall trails nearby</span></div>
-      <div><b data-n="5790" data-fmt="k">0</b><span>Instagram followers</span></div>
-    </div>
+    <span class="mono">// Kozhikode · Kerala</span>
+    <h1>Hills, pools<br>and <em>waterfalls.</em></h1>
+    <p class="lead">Pool resorts and hill stays near Thusharagiri and Anakkampoyil, for families, couples and groups. Pick a property, send one WhatsApp message, done.</p>
+    <div class="cta"><a class="btn solid" href="#book">Check availability</a><a class="btn" href="#stays">See our stays</a></div>
+    <div class="hud five"><div><b data-n="2">0</b><span>stays online now</span></div><div><b>Pools</b><span>at both properties</span></div><div><b>Falls</b><span>and river trails close by</span></div><div><b>3 PM</b><span>check-in</span></div><div><b>12 PM</b><span>check-out</span></div></div>
   </div>
 </header>
-
 <section id="stays">
   <div class="wrap">
-    <div class="sec-h rv"><span class="mono">01 / Stays</span><h2>Choose your hideout.</h2><p>Six ways to sleep in the hills. Rates are shared on call or WhatsApp, as they vary by season and group size.</p></div>
-    <div class="grid" id="stayGrid"></div>
-  </div>
-</section>
-
-<section id="experience" style="background:linear-gradient(180deg,transparent,rgba(61,255,160,.04),transparent)">
-  <div class="wrap">
-    <div class="sec-h rv"><span class="mono">02 / Experience</span><h2>Built for slow weekends.</h2><p>Switch off the city. Everything here is about the hills, the water and the people you came with.</p></div>
-    <div class="exp rv">
-      <div class="big">
-        <img src="img/p10.jpg" alt="Swimming pool with hill view at River Hill" loading="lazy">
-        <svg style="display:none" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3326"/><stop offset="1" stop-color="#050a08"/></linearGradient><linearGradient id="wt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3dffa0" stop-opacity=".55"/><stop offset="1" stop-color="#0a5a8a" stop-opacity=".25"/></linearGradient></defs>
-          <rect width="600" height="420" fill="url(#sk)"/>
-          <path d="M0 250 L90 170 L170 230 L270 120 L370 220 L460 150 L600 250 V420 H0Z" fill="#0d4a33" opacity=".7"/>
-          <path d="M0 300 L120 230 L220 290 L330 200 L450 290 L600 220 V420 H0Z" fill="#0a2e21"/>
-          <rect x="60" y="330" width="300" height="60" rx="10" fill="url(#wt)" stroke="#3dffa0" stroke-opacity=".6"/>
-          <path d="M70 350 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0" stroke="#9bffd6" stroke-opacity=".6" fill="none"/>
-        </svg>
-        <div class="cap"><span class="mono">Signature</span><h3>Pool with a mountain view</h3></div>
-      </div>
-      <div class="list">
-        <div class="item"><div class="ic">≈</div><div><h4>Hill-view swimming pool</h4><p>Swim with the ridge line right in front of you.</p></div></div>
-        <div class="item"><div class="ic">⌁</div><div><h4>River and waterfall access</h4><p>Short drives to Aripara and nearby cascades.</p></div></div>
-        <div class="item"><div class="ic">▲</div><div><h4>Trekking and camping</h4><p>Guided treks and tent nights under the stars.</p></div></div>
-        <div class="item"><div class="ic">♨</div><div><h4>Local Kerala food</h4><p>Home-style meals served at the property.</p></div></div>
-        <div class="item"><div class="ic">P</div><div><h4>Parking and easy check-in</h4><p>Karimbu Road, easy to reach from Kozhikode.</p></div></div>
-      </div>
+    <div class="sec-h rv"><span class="mono">01 / Stays</span><h2>Choose your hideout.</h2><p>Each property is booked as a whole for your group. Rates are shown on each page.</p></div>
+    <div class="pgrid"><a class="pcard rv" href="river-hill/"><div class="pimg"><img src="img/river-hill/th/02.jpg" alt="River Hill" loading="lazy"></div><div class="pbody"><span class="mono">Anakkampoyil, Thiruvambady, Kozhikode</span><h3>River Hill</h3><p>Cottages in the trees, a pool deck, private river access and room for up to 20 guests. Hidden in the Western Ghats foothills near Aripara waterfall.</p><div class="tags"><span>Kids&#x27; pool</span><span>Private river</span><span>Up to 20 guests</span><span>Play area</span></div><div class="go"><span class="from">Whole property <b>₹22,000</b></span><span class="btn">View stay →</span></div></div></a><a class="pcard rv" href="manjumala-resort/"><div class="pimg"><img src="img/manjumala/th/01.jpg" alt="Manjumala Resort" loading="lazy"></div><div class="pbody"><span class="mono">Kodanchery, Thusharagiri, Kozhikode</span><h3>Manjumala Resort</h3><p>A 16 m pool, a mud football turf, a covered terrace hall and space for groups of up to 48. Just 3.3 km from Thusharagiri waterfalls.</p><div class="tags"><span>16 m pool</span><span>Mud turf</span><span>Up to 48 guests</span><span>Terrace hall</span></div><div class="go"><span class="from">From <b>₹900</b> per guest</span><span class="btn">View stay →</span></div></div></a>
+      <div class="pcard soon rv" style="grid-column:1/-1;min-height:170px"><span class="mono">Coming soon</span><h3>More Tavasz stays</h3><p>We are adding more properties. Follow us on Instagram or message us to hear first.</p></div>
     </div>
   </div>
 </section>
-
-<section id="nearby">
+<section id="direct" style="background:linear-gradient(180deg,transparent,rgba(61,255,160,.04),transparent)">
   <div class="wrap">
-    <div class="sec-h rv"><span class="mono">03 / Nearby</span><h2>Your weekend map.</h2><p>Tap a place to see how far it is from River Hill. The map is a sketch, not to scale in direction.</p></div>
-    <div class="chips rv" id="mapChips" role="tablist" aria-label="Filter places"></div>
-    <div class="mapw rv">
-      <div class="mapbox"><svg id="mapSvg" viewBox="-150 0 930 600" role="img" aria-label="Map of places around River Hill"></svg></div>
-      <aside class="mpanel" id="mPanel" aria-live="polite"></aside>
+    <div class="sec-h rv"><span class="mono">02 / Book direct</span><h2>Talk to the people who run the stay.</h2><p>No agent in between. You message us, we answer, and the rate you see is the rate we charge.</p></div>
+    <div class="three">
+      <div class="box rv"><h3>One WhatsApp message</h3><p>Send your dates and group size. We check availability and reply on WhatsApp.</p></div>
+      <div class="box rv"><h3>Clear rates</h3><p>Rates, extras and house rules are listed on every property page, so there are no surprises at check-in.</p></div>
+      <div class="box rv"><h3>Simple policy</h3><p>Check-in 3 PM, check-out 12 PM. No refunds, but you can change your dates.</p></div>
     </div>
-    <div class="mlist rv" id="mList"></div>
+    <p style="margin-top:26px"><a class="btn" href="https://www.instagram.com/tavasz.co/" target="_blank" rel="noopener">See our reels: @tavasz.co →</a></p>
   </div>
 </section>
-
-<section id="gallery">
-  <div class="wrap">
-    <div class="sec-h rv"><span class="mono">04 / Gallery</span><h2>See it before you book.</h2><p>The pool, the rooms, the grounds and the river. Tap any photo to enlarge. More reels and guest stories on our Instagram.</p></div>
-    <div class="ig rv" id="igGrid"></div>
-    <p style="margin-top:26px"><a class="btn" href="https://www.instagram.com/tavasz.co/" target="_blank" rel="noopener">@tavasz.co on Instagram →</a></p>
-  </div>
-</section>
-
 <section id="book">
   <div class="wrap">
     <div class="book rv">
       <div>
-        <span class="mono">05 / Book</span>
-        <h2>Tell us when. We reply fast.</h2>
-        <p>Fill this in and it opens WhatsApp with your request ready to send. No sign-up, no payment on this page.</p>
-        <p style="margin-top:22px"><b style="color:var(--txt)">Call:</b> <a href="tel:+919656441064" style="color:var(--g)">+91 96564 41064</a><br><b style="color:var(--txt)">Also:</b> <a href="tel:+919072818506" style="color:var(--g)">+91 90728 18506</a></p>
+        <span class="mono">03 / Book</span>
+        <h2>Tell us when. We reply on WhatsApp.</h2>
+        <p>Fill this in and it opens WhatsApp with your request ready to send. No sign-up and no payment on this page. We confirm availability and the rate before you pay.</p>
+        <p style="margin-top:22px"><b style="color:var(--txt)">Call or WhatsApp:</b><br><a href="tel:+919072818506" style="color:var(--g)">+91 90728 18506</a> · <a href="tel:+919656441064" style="color:var(--g)">+91 96564 41064</a></p>
       </div>
       <form id="bf">
-        <div><label for="n">Name</label><input id="n" required placeholder="Your name"></div>
-        <div><label for="g">Guests</label><input id="g" type="number" min="1" value="2"></div>
+        <div class="full"><label for="prop">Property</label><select id="prop"><option value="River Hill">River Hill</option><option value="Manjumala Resort">Manjumala Resort</option></select></div>
+        <div><label for="n">Name</label><input id="n" required placeholder="Your name" autocomplete="name"></div>
+        <div><label for="g">Guests</label><input id="g" type="number" min="1" value="2" inputmode="numeric"></div>
         <div><label for="d1">Check in</label><input id="d1" type="date" required></div>
         <div><label for="d2">Check out</label><input id="d2" type="date" required></div>
-        <div class="full"><label for="t">Stay type</label><select id="t"></select></div>
+        <div class="full"><label for="t">Who is coming</label><select id="t"><option>Family</option><option>Couple</option><option>Friends</option><option>Mixed group</option></select></div>
+        <div class="full"><label for="note">Note (optional)</label><input id="note" placeholder="Occasion, food, questions"></div>
         <div class="full"><button class="btn solid" style="width:100%;justify-content:center" type="submit">Send on WhatsApp</button><p class="note">Opens WhatsApp. Availability and rate are confirmed by the Tavasz team.</p></div>
       </form>
     </div>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
-    <div><b>River Hill by Tavasz</b><br>Near Christian Church, Karimbu Road,<br>Anakkampoyil, Kozhikode 673603, Kerala</div>
-    <div><b>Follow</b><br><a href="https://www.instagram.com/tavasz.co/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/111205905366639" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.threads.com/@tavasz.co" target="_blank" rel="noopener">Threads</a></div>
-    <div>© <span id="yr"></span> River Hill by Tavasz. All rights reserved.</div>
+    <div><b>Tavasz</b><br>Pool resorts and hill stays<br>Kozhikode, Kerala</div>
+    <div><b>Follow</b><br><a href="https://www.instagram.com/tavasz.co/" target="_blank" rel="noopener">Instagram @tavasz.co</a> · <a href="river-hill/">River Hill</a> · <a href="manjumala-resort/">Manjumala Resort</a></div>
+    <div>© <span data-yr></span> Tavasz. All rights reserved.</div>
   </div>
 </footer>
-
-<a class="fab" href="https://wa.me/919656441064?text=Hi%20Tavasz%2C%20I%27d%20like%20to%20book%20a%20stay%20at%20River%20Hill." target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
-
-<script>
-const stays=[
- ["Private Cottage","Your own space for family or friends, with privacy and hill views.","#0f5a3c","#3dffa0","img/p1.jpg"],
- ["Couple Cottage","A quiet, cosy room made for two. Sunrise mist included.","#4a2a5c","#ff8fd0","img/p4.jpg"],
- ["Villa","Spacious stay for bigger groups who want to stay together.","#1b3a5c","#7fc8ff","img/p3.jpg"],
- ["Hut","Rustic, close to nature, simple and honest.","#5c3a1b","#ffd36b","img/hut.jpg"],
- ["Tent Stay","Camp under open sky. Campfire nights and morning fog.","#0b4a4a","#6bffe9","img/campfire.jpg"],
- ["Family Resort Stay","Comfortable rooms plus the pool, food and trails.","#3a5c1b","#c8ff7f","img/ig-riverhill.jpg"]
-];
-const sg=document.getElementById('stayGrid'),sel=document.getElementById('t');
-stays.forEach(([t,d,a,b,img],i)=>{
-  const art=img?`<div class="art ph"><img src="${img}" alt="${t} at Tavasz" loading="lazy"></div>`:`<div class="art"><svg viewBox="0 0 400 190" preserveAspectRatio="none"><defs><linearGradient id="a${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="#050a08"/></linearGradient></defs><rect width="400" height="190" fill="url(#a${i})"/><path d="M0 150 L70 90 L140 140 L220 60 L300 130 L400 80 V190 H0Z" fill="${b}" opacity=".28"/><circle cx="320" cy="50" r="22" fill="${b}" opacity=".5"/></svg></div>`;
-  sg.insertAdjacentHTML('beforeend',`<article class="card rv"><div class="glow"></div>
-  ${art}
-  <div class="body"><span class="mono">0${i+1}</span><h3>${t}</h3><p>${d}</p><div class="row"><span>Rate on request</span><a href="#book" data-t="${t}">Book →</a></div></div></article>`);
-  sel.add(new Option(t,t));
-});
-sg.addEventListener('click',e=>{const a=e.target.closest('a[data-t]');if(a)sel.value=a.dataset.t});
-(function(){
-  // km: road km from River Hill (aripara) or from Anakkampoyil town; null = ask us
-  const P=[
-   {id:'ar',n:'Aripara Waterfall',t:'water',km:4,a:250,src:'From River Hill',d:'Popular waterfall on the Thiruvambady to Anakkampoyil road. Best after rain.'},
-   {id:'vm',n:'Vellarimala Trek',t:'trek',km:null,a:165,src:'Trailhead: Muthappanpuzha',d:'The trek starts at Muthappanpuzha, the village after Anakkampoyil. Olichuchattam falls is about a 6 km hike from there. Go with a guide.'},
-   {id:'th',n:'Thusharagiri Falls',t:'water',km:null,a:20,src:'Ask us for the route',d:'One of Kozhikode\'s best known waterfalls, on the Chalippuzha river. Fullest in monsoon.'},
-   {id:'pv',n:'Poovaranthode',t:'water',km:null,a:320,src:'Ask us for the route',d:'River, rocks and green hills. A good half-day outing.'},
-   {id:'kk',n:'Kakkadampoyil',t:'trek',km:null,a:55,src:'Ask us for the route',d:'Cool hill area with viewpoints. It is a separate place from Anakkampoyil, so ask us how to plan both.'},
-   {id:'ur',n:'Urumi Falls',t:'water',km:null,a:215,src:'Ask us for the route',d:'A lesser-known fall that guests love. Ask us for the trail guide.'},
-   {id:'kz',n:'Kozhikode City',t:'town',km:46.5,a:285,src:'From Anakkampoyil town',d:'Railway station, beach and the airport side of your trip.'},
-   {id:'wy',n:'Wayanad',t:'town',km:52.2,a:118,src:'From Anakkampoyil town',d:'Hill district next door. Easy to pair with your stay.'},
-   {id:'sb',n:'Sulthan Bathery',t:'town',km:63.9,a:80,src:'From Anakkampoyil town',d:'Gateway town of north Wayanad.'}
-  ];
-  const C=300,R=(km)=>km==null?172:60+Math.sqrt(km)*23.75;
-  const pos=p=>{const r=R(p.km),a=p.a*Math.PI/180;return[C+r*Math.sin(a),C-r*Math.cos(a)]};
-  const svg=document.getElementById('mapSvg'),panel=document.getElementById('mPanel'),list=document.getElementById('mList'),chips=document.getElementById('mapChips');
-  const NS='http://www.w3.org/2000/svg';let sel=null,filter='all';
-  const rings=[[10,'10 km'],[25,'25 km'],[50,'50 km']];
-  let h='<defs><radialGradient id="sg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 300) scale(260)"><stop offset="0" stop-color="#3dffa0" stop-opacity=".0"/><stop offset="1" stop-color="#3dffa0" stop-opacity=".35"/></radialGradient></defs>';
-  h+='<g aria-hidden="true">';
-  for(let i=0;i<5;i++)h+=`<path class="topo" style="animation-delay:${-i*2}s" d="M${40+i*22} ${330+i*10} C ${120+i*10} ${150+i*20}, ${260-i*8} ${90+i*18}, ${360+i*6} ${170+i*14} S ${540-i*14} ${300+i*8}, ${500-i*20} ${470-i*12}"/>`;
-  rings.forEach(([k,l])=>{const r=60+Math.sqrt(k)*23.75;h+=`<circle class="ring" cx="300" cy="300" r="${r}"/><text class="rlab" x="${300+r*0.71+4}" y="${300-r*0.71-4}">${l}</text>`});
-  h+='<circle class="ring" cx="300" cy="300" r="172" style="stroke:rgba(255,211,107,.22)"/>';
-  h+='<g class="sweep"><path d="M300 300 L300 40 A260 260 0 0 1 430 75 Z" fill="url(#sg)"/></g>';
-  h+='<circle class="ripple" cx="300" cy="300" r="22"/><circle class="ripple" cx="300" cy="300" r="22"/></g>';
-  h+='<g id="routeG"></g><g id="nodes"></g>';
-  h+='<g><circle cx="300" cy="300" r="15" fill="#3dffa0"/><circle cx="300" cy="300" r="6" fill="#032014"/><text x="300" y="338" text-anchor="middle" style="font-size:17px;font-weight:700;fill:#fff">River Hill</text></g>';
-  svg.innerHTML=h;
-  const nodes=document.getElementById('nodes'),routeG=document.getElementById('routeG');
-  P.forEach(p=>{const[x,y]=pos(p);const left=x<300;
-    const g=document.createElementNS(NS,'g');g.setAttribute('class','node'+(p.km==null?' unk':''));g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',p.n+(p.km!=null?', '+p.km+' kilometres':''));g.dataset.id=p.id;
-    g.innerHTML=`<circle class="halo" cx="${x}" cy="${y}" r="20"/><circle class="dot" cx="${x}" cy="${y}" r="9"/><circle cx="${x}" cy="${y}" r="28" fill="transparent"/><text x="${x+(left?-16:16)}" y="${y+5}" text-anchor="${left?'end':'start'}">${p.n.replace(' Waterfall','').replace(' Falls','').replace(' Trek','')}</text>`;
-    g.onclick=()=>pick(p.id);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(p.id)}};
-    nodes.appendChild(g);
-    const b=document.createElement('button');b.dataset.id=p.id;b.innerHTML=`<span>${p.n}</span><em>${p.km!=null?p.km+' km':'ask us'}</em>`;b.onclick=()=>pick(p.id);list.appendChild(b)});
-  [['all','All'],['water','Waterfalls'],['trek','Treks & hills'],['town','Towns']].forEach(([k,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('role','tab');b.className=k==='all'?'on':'';b.onclick=()=>{filter=k;[...chips.children].forEach(c=>c.classList.toggle('on',c===b));apply();if(sel&&k!=='all'&&P.find(x=>x.id===sel).t!==k)pick(P.find(x=>k==='all'||x.t===k).id)};chips.appendChild(b)});
-  function apply(){const show=p=>filter==='all'||p.t===filter;nodes.querySelectorAll('.node').forEach(n=>n.classList.toggle('dim',!show(P.find(p=>p.id===n.dataset.id))));list.querySelectorAll('button').forEach(b=>b.classList.toggle('hide',!show(P.find(p=>p.id===b.dataset.id))))}
-  function count(el,to){if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=to;return}let s=null;const st=ts=>{s??=ts;const q=Math.min((ts-s)/700,1),v=to*(1-Math.pow(1-q,3));el.textContent=to%1?v.toFixed(1):Math.round(v);if(q<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
-  function pick(id){sel=id;const p=P.find(x=>x.id===id),[x,y]=pos(p);
-    nodes.querySelectorAll('.node').forEach(n=>n.classList.toggle('on',n.dataset.id===id));list.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
-    const cx=(300+x)/2+(y-300)*.18,cy=(300+y)/2-(x-300)*.18;
-    routeG.innerHTML=`<path id="rp" class="route" pathLength="1" d="M300 300 Q${cx} ${cy} ${x} ${y}"/><circle r="5" fill="#fff"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1s"><mpath href="#rp"/></animateMotion></circle>`;
-    const msg=encodeURIComponent(`Hi Tavasz, I'm planning a stay at River Hill and want to visit ${p.n}. Can you help with the route and timing?`);
-    panel.innerHTML=`<span class="mono">${{water:'Waterfall',trek:'Trek / hills',town:'Town'}[p.t]}</span><h3>${p.n}</h3><div class="big-km">${p.km!=null?'<span id="kmv">0</span><small>km</small>':'<span style="font-size:.5em">Ask us</span>'}</div><span class="src">${p.src}</span><p>${p.d}</p><a class="btn solid" target="_blank" rel="noopener" href="https://wa.me/919656441064?text=${msg}">Plan this trip on WhatsApp</a>`;
-    if(p.km!=null)count(document.getElementById('kmv'),p.km)}
-  pick('ar');
-})();
-document.getElementById('igGrid').innerHTML=[
- ["img/p10.jpg","Pool with hill view","w"],["img/p3.jpg","Villa on the rock","t"],["img/p1.jpg","Garden cottage",""],["img/p4.jpg","Bedroom with forest view",""],
- ["img/ig-riverhill.jpg","River Hill main house","t"],["img/p8.jpg","Loft room","t"],["img/p9.jpg","Badminton court","w"],["img/p5.jpg","Viewing deck and swing","w"],
- ["img/p7.jpg","Glass corner room",""],["img/p6.jpg","Kids play area","t"],["img/p2.jpg","River nearby","w"],["img/ig-rainy.jpg","Entrance at dusk","t"]
-].map(([s,l,c])=>`<a class="${c}" href="${s}" data-lb><img src="${s}" alt="${l} at River Hill" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"><span>${l}</span></a>`).join('');
-const lb=document.createElement('div');lb.id='lb';lb.innerHTML='<img alt="">';document.body.appendChild(lb);
-document.getElementById('igGrid').addEventListener('click',e=>{const a=e.target.closest('a[data-lb]');if(!a)return;e.preventDefault();lb.querySelector('img').src=a.getAttribute('href');lb.classList.add('on')});
-lb.addEventListener('click',()=>lb.classList.remove('on'));addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
-document.getElementById('yr').textContent=new Date().getFullYear();
-const today=new Date().toISOString().slice(0,10);d1.min=d2.min=today;
-bf.addEventListener('submit',e=>{e.preventDefault();
-  const m=`Hi Tavasz, I'd like to book a stay at River Hill.%0AName: ${encodeURIComponent(n.value)}%0AStay: ${encodeURIComponent(t.value)}%0ACheck in: ${d1.value}%0ACheck out: ${d2.value}%0AGuests: ${g.value}`;
-  window.open('https://wa.me/919656441064?text='+m,'_blank');
-});
-const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-document.querySelectorAll('[data-n]').forEach(el=>{const to=+el.dataset.n,k=el.dataset.fmt==='k';let s=null;
-  const step=ts=>{s??=ts;const p=Math.min((ts-s)/1400,1),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=k?(v/1000).toFixed(1)+'k+':v;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)});
-document.addEventListener('pointermove',e=>{const c=e.target.closest?.('.card');if(!c||matchMedia('(pointer:coarse)').matches)return;
-  const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-  c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');
-  c.style.transform=`perspective(900px) rotateY(${(x-.5)*8}deg) rotateX(${(.5-y)*8}deg) translateY(-4px)`});
-document.addEventListener('pointerout',e=>{const c=e.target.closest?.('.card');if(c)c.style.transform=''});
-(function(){
-  const hc=document.getElementById('hc'),sl=[...hc.querySelectorAll('.s')],dots=document.getElementById('hcDots'),cap=document.getElementById('hcCap');
-  const caps=['Pool with hill view','River Hill main house','Villa on the rock','Bedroom with forest view','Garden cottage','Viewing deck'];
-  let i=0,t=null,paused=false;const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  sl.forEach((_,k)=>{const b=document.createElement('button');b.setAttribute('aria-label','Photo '+(k+1));b.onclick=()=>{go(k);restart()};dots.appendChild(b)});
-  function load(k){const im=sl[k%sl.length].querySelector('img');if(im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}}
-  function go(k){i=(k+sl.length)%sl.length;load(i);load(i+1);sl.forEach((s,n)=>s.classList.toggle('on',n===i));[...dots.children].forEach((d,n)=>d.classList.toggle('on',n===i));cap.textContent=caps[i]}
-  function restart(){clearInterval(t);if(!reduce)t=setInterval(()=>{if(!paused&&!document.hidden)go(i+1)},5000)}
-  document.getElementById('hcPrev').onclick=()=>{go(i-1);restart()};document.getElementById('hcNext').onclick=()=>{go(i+1);restart()};
-  // swipe
-  let x0=null,y0=0;hc.parentElement.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;paused=true},{passive:true});
-  hc.parentElement.addEventListener('touchend',e=>{paused=false;if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.4){go(i+(dx<0?1:-1));restart()}},{passive:true});
-  hc.parentElement.addEventListener('mouseenter',()=>paused=true);hc.parentElement.addEventListener('mouseleave',()=>paused=false);
-  go(0);restart();
-})();
-const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H,P=[];
-function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/14|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25}))}
-rs();addEventListener('resize',rs);
-(function f(){cx.clearRect(0,0,W,H);
-  const g=cx.createRadialGradient(W*.8,H*.1,0,W*.8,H*.1,W*.7);g.addColorStop(0,'rgba(23,201,122,.18)');g.addColorStop(1,'rgba(5,10,8,0)');cx.fillStyle=g;cx.fillRect(0,0,W,H);
-  for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
-    cx.fillStyle='rgba(61,255,160,.7)';cx.fillRect(p.x,p.y,1.6,1.6);
-    for(const q of P){const d=Math.hypot(p.x-q.x,p.y-q.y);if(d<120){cx.strokeStyle=`rgba(61,255,160,${.12*(1-d/120)})`;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}
-  requestAnimationFrame(f)})();
-</script>
+<a class="fab" href="https://wa.me/919072818506?text=Hi%20Tavasz%2C%20I%27d%20like%20to%20book%20a%20stay." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">✆</a>
+<script>window.TAVASZ={wa:"919072818506",prop:"Tavasz"};</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
